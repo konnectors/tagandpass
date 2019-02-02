@@ -31,13 +31,13 @@ deploy:
   script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
   on:
     tags: true
-before_install:
+# before_install:
 # run the yarn travisDeployKey command to genrate this
 # - openssl aes-256-cbc -K $encrypted_0b21ecdcf920_key -iv $encrypted_0b21ecdcf920_iv
 #   -in github_deploy_key.enc -out /tmp/github_deploy_key -d
-- eval "$(ssh-agent -s)"
-- chmod 600 /tmp/github_deploy_key
-- ssh-add /tmp/github_deploy_key
-after_deploy:
-- rm /tmp/github_deploy_key
-- ssh-add -D
+# - eval "$(ssh-agent -s)"
+# - chmod 600 /tmp/github_deploy_key
+# - ssh-add /tmp/github_deploy_key
+# after_deploy:
+# - rm /tmp/github_deploy_key
+# - ssh-add -D
