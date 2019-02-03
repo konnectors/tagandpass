@@ -28,7 +28,7 @@ Create a `konnector-dev-config.json` file at the root with your test credentials
 {
   "COZY_URL": "http://cozy.tools:8080",
   "fields": {
-    "email": "zuck.m@rk.fb",
+    "login": "zuck.m@rk.fb",
     "password": "123456"
   }
 }

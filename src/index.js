@@ -34,7 +34,7 @@ module.exports = new BaseKonnector(start)
 // the account information come from ./konnector-dev-config.json file
 async function start(fields) {
   log('info', 'Authenticating ...')
-  await authenticate(fields.email, fields.password)
+  await authenticate(fields.login, fields.password)
   log('info', 'Successfully logged in')
 
   log('info', 'Retrieve list of invoices')

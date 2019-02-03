@@ -10,7 +10,7 @@
   "vendor_link": "https://www.tag.fr",
   "categories": ["transport"],
   "fields": {
-    "email": {
+    "login": {
       "type": "email"
     },
     "password": {
