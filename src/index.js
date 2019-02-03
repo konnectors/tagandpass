@@ -55,7 +55,6 @@ async function start(fields) {
 async function authenticate(username, password) {
   return request(loginUrl, {
     method: 'POST',
-    formSelector: 'form',
     formData: {
       ECN_EMAIL: username,
       ECN_PASSWORD: password
