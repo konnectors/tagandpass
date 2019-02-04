@@ -85,6 +85,6 @@
       }
     }
   },
-  "banksTransactionRegExp": "\\bsemitag\\b",
+  "banksTransactionRegExp": "semitag",
   "manifest_version": "2"
 }
