@@ -22,6 +22,8 @@ const requestJson = requestFactory({
   jar: true
 })
 
+const vendor = 'semitag'
+const service = 'tagandpass'
 const loginUrl = 'https://www.tag.fr/171-votre-compte-tag-pass.htm'
 const baseUrl = 'https://tag-and-pass.tag.fr'
 const tokenUrl = `${baseUrl}/redirect`
@@ -45,7 +47,7 @@ async function start(fields) {
 
   log('info', 'Saving bills to Cozy')
   await saveBills(bills, fields, {
-    identifiers: ['semitag'],
+    identifiers: [vendor],
     contentType: 'application/pdf'
   })
 }
@@ -80,10 +82,10 @@ function generateBills(invoices) {
   return invoices.map(item => {
     const date = moment(item.date)
     const fileurl = `${baseUrl}${item.url}`
-    const filename = `${date.format('YYYY-MM')}_tagandpass.pdf`
+    const filename = `${date.format('YYYY-MM')}_${service}.pdf`
 
     return {
-      vendor: 'semitag',
+      vendor: vendor,
       date: date.toDate(),
       amount: item.montant,
       currency: 'EUR',
