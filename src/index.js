@@ -24,6 +24,7 @@ const requestJson = requestFactory({
 })
 
 const vendor = 'semitag'
+const currency = '€'
 const service = 'tagandpass'
 const loginUrl = 'https://www.tag.fr/171-votre-compte-tag-pass.htm'
 const baseUrl = 'https://tag-and-pass.tag.fr'
@@ -81,15 +82,18 @@ async function authenticate(username, password) {
 
 function generateBills(invoices) {
   return invoices.map(item => {
-    const date = moment(item.date)
+    const amount = item.montant
+    const amountStr = `${amount.toFixed(2)}${currency}`
+    const date = moment.utc(item.date, 'YYYY-MM-DD')
+    const dateStr = date.format('YYYY-MM-DD')
     const fileurl = `${baseUrl}${item.url}`
-    const filename = `${date.format('YYYY-MM')}_${service}.pdf`
+    const filename = `${dateStr}_${service}_${amountStr}_${item.numero}.pdf`
 
     return {
       vendor: vendor,
       date: date.toDate(),
-      amount: item.montant,
-      currency: 'EUR',
+      amount: amount,
+      currency: currency,
       fileurl: fileurl,
       filename: filename,
       metadata: {
