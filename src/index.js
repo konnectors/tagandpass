@@ -2,6 +2,7 @@ const {
   BaseKonnector,
   requestFactory,
   saveBills,
+  errors,
   log
 } = require('cozy-konnector-libs')
 
@@ -69,7 +70,7 @@ async function authenticate(username, password) {
 
     const redirectUrl = $('iframe').attr('src')
     if (!redirectUrl) {
-      throw new Error('LOGIN_FAILED')
+      throw new Error(errors.LOGIN_FAILED)
     }
 
     const queryParams = redirectUrl.match('token=.+')
