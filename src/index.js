@@ -57,27 +57,27 @@ async function start(fields) {
 // this shows authentication using the [signin function](https://github.com/konnectors/libs/blob/master/packages/cozy-konnector-libs/docs/api.md#module_signin)
 // even if this in another domain here, but it works as an example
 async function authenticate(username, password) {
-  return request(loginUrl, {
+  const $response = await request(loginUrl, {
     method: 'POST',
     formData: {
       ECN_EMAIL: username,
       ECN_PASSWORD: password
     }
-  }).then($ => {
-    const disconnectLink = $('.disconnect')
-    if (disconnectLink.length !== 1) {
-      throw new Error('LOGIN_FAILED')
-    }
-
-    const redirectUrl = $('iframe').attr('src')
-    if (!redirectUrl) {
-      throw new Error(errors.LOGIN_FAILED)
-    }
-
-    const queryParams = redirectUrl.match('token=.+')
-    const correctedUrl = `${tokenUrl}?${queryParams}`
-    return request(correctedUrl)
   })
+
+  const disconnectLink = $response('.disconnect')
+  if (disconnectLink.length !== 1) {
+    throw new Error('LOGIN_FAILED')
+  }
+
+  const redirectUrl = $response('iframe').attr('src')
+  if (!redirectUrl) {
+    throw new Error(errors.LOGIN_FAILED)
+  }
+
+  const queryParams = redirectUrl.match('token=.+')
+  const correctedUrl = `${tokenUrl}?${queryParams}`
+  return request(correctedUrl)
 }
 
 function generateBills(invoices) {
