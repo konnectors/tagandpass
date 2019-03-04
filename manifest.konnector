@@ -7,7 +7,7 @@
   "slug": "tagandpass",
   "source": "git://github.com/rclement/cozy-konnector-tagandpass.git",
   "editor": "Romain Clement",
-  "vendor_link": "https://www.tag.fr",
+  "vendor_link": "https://www.tag.fr/171-votre-compte-tag-pass.htm",
   "categories": ["transport"],
   "fields": {
     "login": {
