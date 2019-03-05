@@ -5,7 +5,7 @@
   "language": "node",
   "icon": "icon.png",
   "slug": "tagandpass",
-  "source": "git://github.com/rclement/cozy-konnector-tagandpass.git",
+  "source": "git://github.com/konnectors/tagandpass.git",
   "editor": "Romain Clement",
   "vendor_link": "https://www.tag.fr/171-votre-compte-tag-pass.htm",
   "categories": ["transport"],
@@ -50,7 +50,7 @@
   "locales": {
     "fr": {
       "short_description": "Récupère vos factures Tag&Pass",
-      "long_description": "Ce connecteur récupère vos factures Tag&Pass",
+      "long_description": "Ce connecteur récupère vos factures Tag&Pass (Transports de l'agglomération grenobloise).\nIl n'est pas encore capable de traiter les factures concernant les cartes OURA sur le site tag.fr, uniquement les rechargements et les comptes concernant l'application Tag&Pass",
       "permissions": {
         "bank operations": {
           "description": "Utilisé pour relier les factures à des operations bancaires"
