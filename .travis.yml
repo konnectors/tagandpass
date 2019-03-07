@@ -1,0 +1,41 @@
+language: node_js
+node_js:
+- '8'
+env:
+  global:
+  - GH_USER_EMAIL="travis@example.org"
+  - GH_USER_NAME="cozy-bot"
+  - DEPLOY_REPOSITORY="git@github.com:konnectors/tagandpass.git"
+  - secure: pirKwSxx9K05+Isuv4lmCRRDWW/Z0fDDGdKm4LlO2g8G2o3YuYzgAyMTVLNgo0APPfJ0UjVquZH/RdWtKGLroUJLHZbJUyByThOO5DTCmEUXIkbAC5QvgqTCjtzQrpYyEscFb3tWQoZC+276TOkn0ggTOeOm+debZTWlSVZMW1No/I+Hd3nxlGHwjvrT63H3hXbfPeuMIrYnDVziaVWjGEW1kMpp0A02VldZj1ukpOZLOHGQnbCtATXOS5LPznZgtYSKHrvcad2DEeIu0bKpotM7IOtEdxHsCvDb38AmciNgYT6Q/NNaN4F/qZ/r2HAQ0bjGSR54vGNVE24SeiObSyJRFLTpUXp/w2OYLmSJ4k9+ynI/qEhwvUhBRNU0Vl0pQsT35dathzr8yd+tULltMLJp4gk5MDhFtGZNtDOW3kJPi9ywcDfIDzkXlg/t1Z2Q5Q8HjvtbdQJmjnP5KA+uHEyU991wvrKfk0BasC8TWOXyxVKsafyuk2QmaaT+fpMfr/JYJs95YuxeFqBsHUN8kgnvBZKYKWZ0LSke2mpl8MOSv9MrxNZuGmFKvn65eY508tNbiGrwzNrvPglmjFqCeMTzNNOPvQTxsD+E9tcou6Z9gLnaxydx9Z7PRWfk5SQuVAj/o9tLErH6gQfZ3ZrlIPml5Ey32D0Ae+3vYN//iuA=
+cache:
+  yarn: true
+  directories:
+  - node_modules
+branches:
+  except:
+  - build
+  - build-debug
+script:
+- yarn lint
+- yarn build
+- yarn run check
+deploy:
+- provider: script
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  on:
+    branch: master
+- provider: script
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  on:
+    tags: true
+before_install:
+- openssl aes-256-cbc -K $encrypted_41be6ea556c7_key -iv $encrypted_41be6ea556c7_iv
+  -in github_deploy_key.enc -out /tmp/github_deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/github_deploy_key
+- ssh-add /tmp/github_deploy_key
+after_deploy:
+- rm /tmp/github_deploy_key
+- ssh-add -D

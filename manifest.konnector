@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "name": "Tag&Pass",
+  "type": "konnector",
+  "language": "node",
+  "icon": "icon.png",
+  "slug": "tagandpass",
+  "source": "git://github.com/konnectors/tagandpass.git",
+  "editor": "Romain Clement",
+  "vendor_link": "https://www.tag.fr/171-votre-compte-tag-pass.htm",
+  "categories": ["transport"],
+  "fields": {
+    "login": {
+      "type": "email"
+    },
+    "password": {
+      "type": "password"
+    },
+    "advancedFields": {
+      "folderPath": {
+        "advanced": true,
+        "isRequired": false
+      }
+    }
+  },
+  "data_types": [
+    "bill"
+  ],
+  "screenshots": [],
+  "permissions": {
+    "bank operations": {
+      "type": "io.cozy.bank.operations"
+    },
+    "bills": {
+      "type": "io.cozy.bills"
+    },
+    "files": {
+      "type": "io.cozy.files"
+    },
+    "accounts": {
+      "type": "io.cozy.accounts",
+      "verbs": ["GET"]
+    }
+  },
+  "developer": {
+    "name": "Romain Clement",
+    "url": "https://romain-clement.net"
+  },
+  "langs": ["fr", "en"],
+  "locales": {
+    "fr": {
+      "short_description": "Récupère vos factures Tag&Pass",
+      "long_description": "Récupère vos factures Tag&Pass (Transports de l'agglomération grenobloise).\n\n&nbsp\n\nLes factures concernant les cartes OURA ne sont pas encore traitées, uniquement celles concernant l'application Tag&Pass.",
+      "permissions": {
+        "bank operations": {
+          "description": "Utilisé pour relier les factures à des operations bancaires"
+        },
+        "bills": {
+          "description": "Utilisé pour sauver les données des factures"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "short_description": "Fetch your Tag & Pass bills",
+      "long_description": "Fetch your Tag & Pass bills (Transports de l'agglomération grenobloise).\n\n&nbsp\n\nInvoices concerning OURA cards are not processed yet, only those concerning the Tag & Pass application",
+      "permissions": {
+        "bank operations": {
+          "description": "Required to link bank operations to bills"
+        },
+        "bills": {
+          "description": "Required to save the bills data"
+        },
+        "files": {
+          "description": "Required to save the bills"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
+        }
+      }
+    }
+  },
+  "banksTransactionRegExp": "\\bsemitag\\b",
+  "manifest_version": "2"
+}
