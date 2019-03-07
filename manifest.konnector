@@ -50,7 +50,7 @@
   "locales": {
     "fr": {
       "short_description": "Récupère vos factures Tag&Pass",
-      "long_description": "Ce connecteur récupère vos factures Tag&Pass (Transports de l'agglomération grenobloise).\nIl n'est pas encore capable de traiter les factures concernant les cartes OURA sur le site tag.fr, uniquement les rechargements et les comptes concernant l'application Tag&Pass",
+      "long_description": "Récupère vos factures Tag&Pass (Transports de l'agglomération grenobloise).\n\n&nbsp\n\nLes factures concernant les cartes OURA ne sont pas encore traitées, uniquement celles concernant l'application Tag&Pass.",
       "permissions": {
         "bank operations": {
           "description": "Utilisé pour relier les factures à des operations bancaires"
@@ -67,8 +67,8 @@
       }
     },
     "en": {
-      "short_description": "Fetch bills from Tag&Pass",
-      "long_description": "This connector fetches your bills from Tag&Pass",
+      "short_description": "Fetch your Tag & Pass bills",
+      "long_description": "Fetch your Tag & Pass bills (Transports de l'agglomération grenobloise).\n\n&nbsp\n\nInvoices concerning OURA cards are not processed yet, only those concerning the Tag & Pass application.",
       "permissions": {
         "bank operations": {
           "description": "Required to link bank operations to bills"
