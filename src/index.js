@@ -104,7 +104,7 @@ function generateBills(invoices) {
       filename: filename,
       metadata: {
         importDate: new Date(),
-        version: 1
+        version: 2
       }
     }
   })
