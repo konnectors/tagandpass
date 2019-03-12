@@ -90,7 +90,7 @@ function generateBills(invoices) {
   return invoices.map(item => {
     const amount = item.montant
     const amountStr = `${amount.toFixed(2)}${currency}`
-    const date = moment.utc(item.date, 'YYYY-MM-DD')
+    const date = moment.utc(item.date, 'YYYY-MM-DD').endOf('month')
     const dateStr = date.format('YYYY-MM-DD')
     const fileurl = `${baseUrl}${item.url}`
     const filename = `${dateStr}_${service}_${amountStr}_${item.numero}.pdf`
