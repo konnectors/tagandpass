@@ -5,7 +5,7 @@
   "language": "node",
   "icon": "icon.png",
   "slug": "tagandpass",
-  "source": "git://github.com/konnectors/tagandpass.git",
+  "source": "git@github.com:konnectors/tagandpass.git",
   "editor": "Romain Clement",
   "vendor_link": "https://www.tag.fr/171-votre-compte-tag-pass.htm",
   "categories": [
