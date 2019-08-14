@@ -1331,10 +1331,10 @@ cozy-jobs-cli@1.9.3:
     replay "2.4.0"
     strip-json-comments "3.0.1"
 
-cozy-konnector-libs@4.19.2:
-  version "4.19.2"
-  resolved "https://registry.yarnpkg.com/cozy-konnector-libs/-/cozy-konnector-libs-4.19.2.tgz#d0cf92e7b3f2ecbb815132ccd127ecc63bb5ac96"
-  integrity sha512-LcpgTDlh7T4zcEqe+sbR8ZbzcmwR/p7iE2+Ro+LicPokBWjILfPD41DoxIguEU8r2aKIjwkEJvgd7idhE4Jf6g==
+cozy-konnector-libs@4.19.3:
+  version "4.19.3"
+  resolved "https://registry.yarnpkg.com/cozy-konnector-libs/-/cozy-konnector-libs-4.19.3.tgz#dc034e4a26cd98cf978f3af6a8ce91c02a659cf7"
+  integrity sha512-cuzHEteWcLNnQgTR8XqXl+XujlcgJyoNvRF74jbq6H12aqGNoDrYCluGkIGX8xUk+az/svjlPKtRb3yNFOm0CQ==
   dependencies:
     bluebird "3.5.5"
     bluebird-retry "0.11.0"
