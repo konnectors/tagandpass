@@ -34,8 +34,7 @@ const currency = '€'
 const service = 'tagandpass'
 const loginUrl = 'https://www.tag.fr/171-votre-compte-tag-pass.htm'
 const baseUrl = 'https://tag-and-pass.tag.fr'
-const tokenUrl = `${baseUrl}/redirect`
-const invoicesUrl = `${baseUrl}/api/account/factures`
+const invoicesUrl = `${baseUrl}/api/factures`
 
 module.exports = new BaseKonnector(start)
 
@@ -44,11 +43,13 @@ module.exports = new BaseKonnector(start)
 // the account information come from ./konnector-dev-config.json file
 async function start(fields) {
   log('info', 'Authenticating ...')
-  await authenticate(fields.login, fields.password)
+  const token = await authenticate(fields.login, fields.password)
   log('info', 'Successfully logged in')
 
   log('info', 'Retrieve list of invoices')
-  const invoices = await requestJson(invoicesUrl)
+  const invoices = await requestJson(invoicesUrl, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
 
   log('info', 'Generate bills from invoices')
   const bills = await generateBills(invoices)
@@ -67,7 +68,11 @@ async function authenticate(username, password) {
     method: 'POST',
     formData: {
       ECN_EMAIL: username,
-      ECN_PASSWORD: password
+      ECN_PASSWORD: password,
+      login: 'Accédez+à+votre+espace',
+      idtf: '171',
+      from: loginUrl,
+      TPL_CODE: 'TPL_TAGANDGO'
     }
   })
 
@@ -81,18 +86,20 @@ async function authenticate(username, password) {
     throw new Error(errors.LOGIN_FAILED)
   }
 
+  await request(redirectUrl)
+
   const queryParams = redirectUrl.match('token=.+')
-  const correctedUrl = `${tokenUrl}?${queryParams}`
-  return request(correctedUrl)
+  const token = queryParams[0].split('=')[1]
+  return token
 }
 
 function generateBills(invoices) {
   return invoices.map(item => {
-    const amount = item.montant
+    const amount = item.montant / 100.0
     const amountStr = `${amount.toFixed(2)}${currency}`
     const date = moment.utc(item.date, 'YYYY-MM-DD')
     const dateStr = date.format('YYYY-MM-DD')
-    const fileurl = `${baseUrl}${item.url}`
+    const fileurl = `${baseUrl}${item.urlPdf}`
     const filename = `${dateStr}_${service}_${amountStr}_${item.numero}.pdf`
 
     return {
