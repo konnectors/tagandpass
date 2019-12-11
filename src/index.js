@@ -94,20 +94,22 @@ async function authenticate(username, password) {
 }
 
 function generateBills(invoices) {
-  return invoices.map(item => {
+  return invoices.map(async item => {
     const amount = item.montant / 100.0
     const amountStr = `${amount.toFixed(2)}${currency}`
     const date = moment.utc(item.date, 'YYYY-MM-DD')
     const dateStr = date.format('YYYY-MM-DD')
     const fileurl = `${baseUrl}${item.urlPdf}`
     const filename = `${dateStr}_${service}_${amountStr}_${item.numero}.pdf`
+    const filecontent = await requestJson(fileurl)
 
     return {
       vendor: vendor,
       date: date.endOf('month').toDate(),
       amount: amount,
       currency: currency,
-      fileurl: fileurl,
+      contentType: filecontent.fileType,
+      filestream: Buffer.from(filecontent.content, 'base64'),
       filename: filename,
       metadata: {
         importDate: new Date(),
