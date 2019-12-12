@@ -17,7 +17,8 @@ script:
 - yarn lint
 - yarn build
 - yarn run check
-deploy: - provider: script
+deploy:
+- provider: script
   skip-cleanup: true
   script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
   on:
