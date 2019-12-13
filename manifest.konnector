@@ -1,14 +1,16 @@
 {
-  "version": "1.0.0",
+  "version": "1.3.0",
   "name": "Tag&Pass",
   "type": "konnector",
   "language": "node",
-  "icon": "icon.png",
+  "icon": "icon.svg",
   "slug": "tagandpass",
-  "source": "git://github.com/konnectors/tagandpass.git",
+  "source": "git@github.com:konnectors/tagandpass.git",
   "editor": "Romain Clement",
   "vendor_link": "https://www.tag.fr/171-votre-compte-tag-pass.htm",
-  "categories": ["transport"],
+  "categories": [
+    "transport"
+  ],
   "fields": {
     "login": {
       "type": "email"
@@ -39,14 +41,19 @@
     },
     "accounts": {
       "type": "io.cozy.accounts",
-      "verbs": ["GET"]
+      "verbs": [
+        "GET"
+      ]
     }
   },
   "developer": {
     "name": "Romain Clement",
     "url": "https://romain-clement.net"
   },
-  "langs": ["fr", "en"],
+  "langs": [
+    "fr",
+    "en"
+  ],
   "locales": {
     "fr": {
       "short_description": "Récupère vos factures Tag&Pass",
@@ -68,7 +75,7 @@
     },
     "en": {
       "short_description": "Fetch your Tag & Pass bills",
-      "long_description": "Fetch your Tag & Pass bills (Transports de l'agglomération grenobloise).\n\n&nbsp\n\nInvoices concerning OURA cards are not processed yet, only those concerning the Tag & Pass application",
+      "long_description": "Fetch your Tag & Pass bills (Transports de l'agglomération grenobloise).\n\n&nbsp\n\nInvoices concerning OURA cards are not processed yet, only those concerning the Tag & Pass application.",
       "permissions": {
         "bank operations": {
           "description": "Required to link bank operations to bills"
