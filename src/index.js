@@ -15,6 +15,8 @@ const {
 const moment = require('moment')
 moment.locale('fr')
 
+const toStream = require('buffer-to-stream')
+
 const request = requestFactory({
   debug: false,
   cheerio: true,
@@ -109,7 +111,7 @@ function generateBills(invoices) {
       amount: amount,
       currency: currency,
       contentType: filecontent.fileType,
-      filestream: Buffer.from(filecontent.content, 'base64'),
+      filestream: toStream(Buffer.from(filecontent.content, 'base64')),
       filename: filename,
       metadata: {
         importDate: new Date(),
