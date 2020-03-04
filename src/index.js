@@ -34,7 +34,7 @@ const requestJson = requestFactory({
 const vendor = 'semitag'
 const currency = '€'
 const service = 'tagandpass'
-const loginUrl = 'https://www.tag.fr/171-votre-compte-tag-pass.htm'
+const loginUrl = 'https://www.tag.fr/171-votre-compte-pass-mobilites.htm'
 const baseUrl = 'https://tag-and-pass.tag.fr'
 const invoicesUrl = `${baseUrl}/api/factures`
 
@@ -78,7 +78,7 @@ async function authenticate(username, password) {
     }
   })
 
-  const disconnectLink = $response('.disconnect')
+  const disconnectLink = $response('a.disconnected')
   if (disconnectLink.length !== 1) {
     throw new Error('LOGIN_FAILED')
   }
