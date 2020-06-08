@@ -38,13 +38,13 @@
   },
   "dependencies": {
     "buffer-to-stream": "1.0.0",
-    "cozy-konnector-libs": "4.34.3",
+    "cozy-konnector-libs": "4.34.4",
     "moment": "2.26.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "6.0.1",
+    "copy-webpack-plugin": "6.0.2",
     "cozy-app-publish": "0.22.3",
-    "cozy-jobs-cli": "1.13.4",
+    "cozy-jobs-cli": "1.13.5",
     "eslint-config-cozy-app": "1.5.0",
     "git-directory-deploy": "1.5.1",
     "husky": "4.2.5",
