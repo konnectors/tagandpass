@@ -39,7 +39,7 @@
   "dependencies": {
     "buffer-to-stream": "1.0.0",
     "cozy-konnector-libs": "4.34.4",
-    "moment": "2.26.0"
+    "moment": "2.27.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "6.0.2",
