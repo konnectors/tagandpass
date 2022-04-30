@@ -39,7 +39,7 @@
   "dependencies": {
     "buffer-to-stream": "1.0.0",
     "cozy-konnector-libs": "4.52.1",
-    "moment": "2.29.2"
+    "moment": "2.29.3"
   },
   "devDependencies": {
     "cozy-jobs-cli": "1.17.6",
